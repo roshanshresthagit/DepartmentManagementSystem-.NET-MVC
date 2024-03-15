@@ -1,16 +1,18 @@
 using DepartmentManagementSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using DepartmentManagementSystem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ItemDb>(options =>
+
 options.UseSqlServer(builder.Configuration.GetConnectionString("MvcConnectionString")));
 
-
+builder.Services.AddIdentityCore<IdentityUser>().AddDefaultTokenProviders()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ItemDb>();
 
 
 
