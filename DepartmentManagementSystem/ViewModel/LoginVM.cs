@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace DepartmentManagementSystem.ViewModel
 {
-    public class LoginVm
+    public class LoginVM
     {
 
         [Required(ErrorMessage = "Username is Required")]

@@ -1,20 +1,31 @@
 using DepartmentManagementSystem.Data;
-using Microsoft.EntityFrameworkCore;
+using DepartmentManagementSystem.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+var connectionstring = builder.Configuration.GetConnectionString("default");
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ItemDb>(options =>
 
-options.UseSqlServer(builder.Configuration.GetConnectionString("MvcConnectionString")));
+builder.Services.AddDbContext<ItemDb>(
+    options => options.UseSqlServer(connectionstring)
+    );
 
-builder.Services.AddIdentityCore<IdentityUser>().AddDefaultTokenProviders()
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<ItemDb>();
-
-
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.Password.RequiredUniqueChars = 0;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+}
+)
+    .AddEntityFrameworkStores<ItemDb>().AddDefaultTokenProviders();
 
 var app = builder.Build();
 
@@ -28,7 +39,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();

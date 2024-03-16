@@ -1,5 +1,4 @@
 ﻿using DepartmentManagementSystem.Models;
-using DepartmentManagementSystem.Models.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +10,7 @@ namespace DepartmentManagementSystem.Data
         {
         }
 
-        public DbSet<Item> Items { get; set; }
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        //public DbSet<Item> Items { get; set; }
+        public DbSet<AppUser> ApplicationUsers { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DepartmentManagementSystem.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class AppUser : IdentityUser
     {
         [StringLength(100)]
         [MaxLength(100)]

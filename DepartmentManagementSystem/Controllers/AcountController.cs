@@ -2,17 +2,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using DepartmentManagementSystem.Models;
-using Microsoft.EntityFrameworkCore.Query;
 
-namespace CustomLogin.Controllers
+namespace DepartmentManagementSystem.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<AppUser> signInManager;
+        private readonly UserManager<AppUser> userManager;
 
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -22,7 +21,7 @@ namespace CustomLogin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginVm model)
+        public async Task<IActionResult> Login(LoginVM model)
         {
             if (ModelState.IsValid)
             {
@@ -47,7 +46,7 @@ namespace CustomLogin.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = new ApplicationUser()
+                AppUser user = new AppUser()
                 {
                     Name = model.Name,
                     UserName = model.Email,
