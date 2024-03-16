@@ -1,4 +1,5 @@
-﻿using DepartmentManagementSystem.Models.Domain;
+﻿using DepartmentManagementSystem.Models;
+using DepartmentManagementSystem.Models.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
