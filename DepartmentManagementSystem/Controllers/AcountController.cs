@@ -29,7 +29,7 @@ namespace DepartmentManagementSystem.Controllers
                 var result = await signInManager.PasswordSignInAsync(model.Username!, model.Password!, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    Console.WriteLine("user logged in");
+                    //Console.WriteLine("user logged in");
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Invalid Login attemp");

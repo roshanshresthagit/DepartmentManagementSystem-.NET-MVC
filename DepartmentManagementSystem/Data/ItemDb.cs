@@ -10,7 +10,7 @@ namespace DepartmentManagementSystem.Data
         {
         }
 
-        //public DbSet<Item> Items { get; set; }
+        public DbSet<Item> Items { get; set; }
         public DbSet<AppUser> ApplicationUsers { get; set; }
     }
 }
