@@ -1,6 +1,8 @@
-﻿using DepartmentManagementSystem.Models;
+﻿using DepartmentManagementSystem.Data;
+using DepartmentManagementSystem.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace DepartmentManagementSystem.Controllers
@@ -8,6 +10,7 @@ namespace DepartmentManagementSystem.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+
 
         public HomeController(ILogger<HomeController> logger)
         {

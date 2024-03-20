@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DepartmentItemManagement.Controllers
 {
-
+    
     public class ItemManagementController : Controller
     {
         private readonly ItemDb itemdb;
@@ -21,11 +21,13 @@ namespace DepartmentItemManagement.Controllers
             var item = itemdb.Items.ToList();
             return View(item);
         }
+        [Authorize]
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
+        [Authorize]
         [HttpPost]
         public IActionResult Add(AddItem additem)
         {
@@ -60,6 +62,7 @@ namespace DepartmentItemManagement.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
+        [Authorize]
         public IActionResult View(UpdateItem updateitem)
         {
             var newitem = itemdb.Items.Find(updateitem.Id);
@@ -73,6 +76,7 @@ namespace DepartmentItemManagement.Controllers
             }
             return RedirectToAction("Index");
         }
+        [Authorize]
         [HttpPost]
         public IActionResult Delete(int id)
         {
